@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'mvn clean -P Secuencial test'
+        sh 'mvn clean test'
       }
     }
   }
