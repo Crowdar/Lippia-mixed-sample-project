@@ -1,0 +1,10 @@
+{
+  "url": "https://clients-api.dev.tunubi.com/v1/admin/users/bulk_by_cuit/",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  	"urlParameters": {
+ 		"cuit": "27223499479"  		
+	}
+}
+

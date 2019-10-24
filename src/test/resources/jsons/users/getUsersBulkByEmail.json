@@ -1,0 +1,12 @@
+{
+  "url": "https://clients-api.dev.tunubi.com/v1/admin/users/bulk_by_email",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  	"body": {
+  		"email": [
+    		"maria.castaneda@crowdaronline.com"
+  		]
+	}
+}
+

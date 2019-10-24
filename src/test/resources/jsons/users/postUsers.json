@@ -1,0 +1,26 @@
+{
+  "url": "https://clients-api.dev.tunubi.com/v1/admin/users/f9177d0b-172e-4bf6-b8dd-293ed25bade4/",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+	 "user": {
+		 "attempts": "0",
+		 "cuit": "27133364477",
+		 "date_of_birth": "1943-05-01",
+		 "fee_type": "standard_nubi",
+		 "first_name": "Charlie",
+		 "id": "cc78e8c4-f830-4a42-9e61-7d0a1ca63125",
+		 "income_tax_category": "regimen_simplificado",
+		 "income_tax_id": "ee9573f5-bf1b-446e-9c17-86f1864dab01",
+		 "last_name": "Botsford",
+		 "others": "Other field",
+		 "pep": "true",
+		 "phone_number": "+542955469288",
+		 "phone_type": "line",
+		 "type": "Individual",
+		 "vat_category": "exe"
+	  },"id": "f9177d0b-172e-4bf6-b8dd-293ed25bade4"
+    }
+  }
+

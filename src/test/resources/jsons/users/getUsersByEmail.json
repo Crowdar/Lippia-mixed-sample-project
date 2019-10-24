@@ -1,0 +1,8 @@
+{
+  "url": "https://clients-api.dev.tunubi.com/v1/admin/users/by_email/",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "urlParameters": { "email": "maria.castaneda@crowdaronline.com" }
+}
+
