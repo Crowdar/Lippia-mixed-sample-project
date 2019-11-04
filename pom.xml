@@ -21,41 +21,46 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <base.api.url>https://reqres.in/api/users</base.api.url>
         <crowdar.cucumber.filter>@Example</crowdar.cucumber.filter>
-        <crowdar.cucumber.option>src/test/resources/features --glue com/crowdar --glue com/crowdar/bdd/cukes --glue ar/steps --glue ar/apiExampleProject/hook --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
-        </crowdar.cucumber.option>
         <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
-        <crowdar.extent.report.name>ApiExampleReport</crowdar.extent.report.name>
+        <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
+        <crowdar.extent.environment>Local</crowdar.extent.environment>
+        <crowdar.extent.user.name>User.name</crowdar.extent.user.name>    
+        <crowdar.api></crowdar.api>
+        <runner>testngParallel.xml</runner>
     </properties>
     <profiles>
         <profile>
-            <id>Secuencial</id>
+            <id>web</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <apiExample.runner>testng.xml</apiExample.runner>
                 <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
                 <crowdar.extent.environment>Local</crowdar.extent.environment>
-                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>				<crowdar.extent.report.name>WebExampleReport</crowdar.extent.report.name>
+		        <crowdar.projectType>WEB_CHROME</crowdar.projectType>
+		        <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>               
+		        <crowdar.cucumber.option>src/test/resources/web/features --glue ar/web --glue ar/hooks --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
+        		</crowdar.cucumber.option>
             </properties>
         </profile>
-        <profile>
-            <id>Paralelo</id>
-            <activation>
-            </activation>
+         <profile>
+            <id>api</id>
             <properties>
-                <apiExample.runner>testngParallel.xml</apiExample.runner>
-                <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
-                <crowdar.extent.environment>Local</crowdar.extent.environment>
-                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+ 				<crowdar.extent.report.name>ApiExampleReport</crowdar.extent.report.name>
+		        <crowdar.api>true</crowdar.api>
+                <crowdar.cucumber.option>src/test/resources/api/features --glue ar/api --glue ar/hooks --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
+        		</crowdar.cucumber.option>
+ 				<crowdar.projectType></crowdar.projectType>
+		        <crowdar.setupStrategy>api.ApiStrategy</crowdar.setupStrategy>               
             </properties>
         </profile>
     </profiles>
     <dependencies>
         <dependency>
             <groupId>com.crowdar.lippia</groupId>
-                <artifactId>core</artifactId>
-                <version>1.6.9</version>
+            <artifactId>core</artifactId>
+            <version>1.6.9</version>
         </dependency>
     </dependencies>
     <build>
@@ -69,7 +74,7 @@
                 <version>2.22.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${apiExample.runner}</suiteXmlFile>
+                        <suiteXmlFile>${runner}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
