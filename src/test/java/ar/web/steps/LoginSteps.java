@@ -1,7 +1,5 @@
 package ar.web.steps;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.testng.Assert;
 
 import com.crowdar.bdd.cukes.SharedDriver;
@@ -30,26 +28,11 @@ public class LoginSteps extends PageSteps {
 		loginPage.isPageDisplayed();
 	}
 
-	@When("^I complete the username field as '(.*)'$")
-	public void completeUsername(String username) throws IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, NoSuchMethodException, SecurityException {
-		loginPage.completeFieldUsername(username);
-	
+	@When("^I perform login with username: '(.*)' and password: '(.*)'$")
+	public void completeUsername(String username, String password){
+		loginPage.login(username, password);
 	}
 	
-	@When("^I complete the password field with '(.*)'$")
-	public void completePassword(String password) throws IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, NoSuchMethodException, SecurityException {
-		loginPage.completeFieldPassword(password);
-	
-	}
-	
-	@When("^I perform a click on sigin button$")
-	public void clickOnSiginButto() throws IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, NoSuchMethodException, SecurityException {
-		loginPage.clickSendButton();
-	}
-
 	@Then("^I verify the main logued user page is displayed$")
 	public void mainPageIsDisplayed() {
 		loginPage.waitForLoadingDisapear();

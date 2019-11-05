@@ -15,15 +15,15 @@ public class LoginPage extends CustomPageBase {
 		super(driver);
 	}
 	
-	public void clickSendButton() {
+	private void clickSendButton() {
 		clickElement(By.cssSelector(SEND_BUTTON_LOCATOR_CSS));
 	}
 	
-	public void completeFieldUsername(String username) {
+	private void completeFieldUsername(String username) {
 		completeField(By.cssSelector(USERNAME_INPUT_LOCATOR_CSS), username);
 	}
 
-	public void completeFieldPassword(String password) {
+	private void completeFieldPassword(String password) {
 		completeField(By.cssSelector(PASSWORD_INPUT_LOCATOR_CSS), password);
 	}
 	
@@ -38,6 +38,12 @@ public class LoginPage extends CustomPageBase {
 
 	public void waitForLoadingDisapear() {
 		waitForElementDisappears(By.cssSelector(LOADING_DIV));
+	}
+
+	public void login(String username, String password) {
+		completeFieldUsername(username);
+		completeFieldPassword(password);
+		clickSendButton();
 	}
 	
 }

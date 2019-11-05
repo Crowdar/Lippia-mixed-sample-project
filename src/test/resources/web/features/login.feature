@@ -1,14 +1,11 @@
-Feature: Login on test web page
-  Como un usuario de test web page
-  Quiero efectuar el login
-  Para ver la pagina principal
+Feature: Login
+  As a nubi user
+  I want to perform a login
+  To verify the behavior
 
-  @Example
-  Scenario Outline: Login on test web page
+  Scenario Outline: Login 
     Given I want to go to test web page main page
-    When I complete the username field as '<username>'
-    And I complete the password field with '<password>'
-    And I perform a click on sigin button
+    When I perform login with username: '<username>' and password: '<password>'
     Then I verify the main logued user page is displayed
 
     Examples: 

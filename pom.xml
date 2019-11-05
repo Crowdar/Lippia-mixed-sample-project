@@ -10,49 +10,50 @@
     </parent>
 
     <groupId>com.Crowdar</groupId>
-    <artifactId>lippia-api-example-project</artifactId>
+    <artifactId>nubi_automation</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>api-rest-automation</name>
+    <name>nubi_automation</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <properties>
-        <crowd.project.name>ApiExampleProject</crowd.project.name>
+        <crowd.project.name>Nubi Atomation Project</crowd.project.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <base.api.url>https://reqres.in/api/users</base.api.url>
-        <crowdar.cucumber.filter>@Example</crowdar.cucumber.filter>
-        <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
+        
         <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
         <crowdar.extent.environment>Local</crowdar.extent.environment>
-        <crowdar.extent.user.name>User.name</crowdar.extent.user.name>    
+        <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+        <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
+        
         <crowdar.api></crowdar.api>
+        <crowdar.projectType></crowdar.projectType>
+        <crowdar.setupStrategy></crowdar.setupStrategy>
+        
         <runner>testngParallel.xml</runner>
     </properties>
     <profiles>
         <profile>
-            <id>web</id>
+            <id>web_local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
-                <crowdar.extent.environment>Local</crowdar.extent.environment>
-                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>				<crowdar.extent.report.name>WebExampleReport</crowdar.extent.report.name>
+				<crowdar.extent.report.name>FrontEndTestsReport</crowdar.extent.report.name>
+				
 		        <crowdar.projectType>WEB_CHROME</crowdar.projectType>
-		        <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>               
-		        <crowdar.cucumber.option>src/test/resources/web/features --glue ar/web --glue ar/hooks --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
-        		</crowdar.cucumber.option>
+		        <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>     
+		                  
+		        <crowdar.cucumber.option>src/test/resources/web/features --glue ar/web --glue ar/hooks --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
             </properties>
         </profile>
          <profile>
             <id>api</id>
             <properties>
- 				<crowdar.extent.report.name>ApiExampleReport</crowdar.extent.report.name>
+ 				<crowdar.extent.report.name>Api Test Report</crowdar.extent.report.name>
 		        <crowdar.api>true</crowdar.api>
-                <crowdar.cucumber.option>src/test/resources/api/features --glue ar/api --glue ar/hooks --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
-        		</crowdar.cucumber.option>
- 				<crowdar.projectType></crowdar.projectType>
-		        <crowdar.setupStrategy>api.ApiStrategy</crowdar.setupStrategy>               
+                <crowdar.cucumber.option>src/test/resources/api/features --glue ar/api --glue ar/hooks --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
+
+            	<base.api.url>https://reqres.in/api/users</base.api.url>
             </properties>
         </profile>
     </profiles>
