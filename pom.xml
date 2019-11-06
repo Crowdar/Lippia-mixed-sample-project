@@ -10,52 +10,58 @@
     </parent>
 
     <groupId>com.Crowdar</groupId>
-    <artifactId>lippia-api-example-project</artifactId>
+    <artifactId>nubi_automation</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>api-rest-automation</name>
+    <name>nubi_automation</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <properties>
-        <crowd.project.name>ApiExampleProject</crowd.project.name>
+        <crowd.project.name>Nubi Atomation Project</crowd.project.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <base.api.url>https://reqres.in/api/users</base.api.url>
-        <crowdar.cucumber.filter>@Example</crowdar.cucumber.filter>
-        <crowdar.cucumber.option>src/test/resources/features --glue com/crowdar --glue com/crowdar/bdd/cukes --glue ar/steps --glue ar/apiExampleProject/hook --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
-        </crowdar.cucumber.option>
+        
+        <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
+        <crowdar.extent.environment>Local</crowdar.extent.environment>
+        <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
         <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
-        <crowdar.extent.report.name>ApiExampleReport</crowdar.extent.report.name>
+        
+        <crowdar.report.disable_screenshot_on_failure></crowdar.report.disable_screenshot_on_failure>
+        <crowdar.projectType></crowdar.projectType>
+        <crowdar.setupStrategy></crowdar.setupStrategy>
+        
+        <runner>testngParallel.xml</runner>
     </properties>
     <profiles>
         <profile>
-            <id>Secuencial</id>
+            <id>web_local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <apiExample.runner>testng.xml</apiExample.runner>
-                <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
-                <crowdar.extent.environment>Local</crowdar.extent.environment>
-                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+				<crowdar.extent.report.name>FrontEndTestsReport</crowdar.extent.report.name>
+				
+		        <crowdar.projectType>WEB_CHROME</crowdar.projectType>
+		        <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>     
+		                  
+		        <crowdar.cucumber.option>src/test/resources/web/features --glue ar/web --glue ar/hooks --tags @Regresion --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
             </properties>
         </profile>
-        <profile>
-            <id>Paralelo</id>
-            <activation>
-            </activation>
+         <profile>
+            <id>api</id>
             <properties>
-                <apiExample.runner>testngParallel.xml</apiExample.runner>
-                <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
-                <crowdar.extent.environment>Local</crowdar.extent.environment>
-                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+ 				<crowdar.extent.report.name>Api Test Report</crowdar.extent.report.name>
+		        <crowdar.report.disable_screenshot_on_failure>true</crowdar.report.disable_screenshot_on_failure>
+                <crowdar.cucumber.option>src/test/resources/api/features --glue ar/api --glue ar/hooks --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
+
+            	<base.api.url>https://reqres.in/api/users</base.api.url>
             </properties>
         </profile>
     </profiles>
     <dependencies>
         <dependency>
             <groupId>com.crowdar.lippia</groupId>
-                <artifactId>core</artifactId>
-                <version>1.6.9</version>
+            <artifactId>core</artifactId>
+            <version>1.6.9</version>
         </dependency>
     </dependencies>
     <build>
@@ -69,7 +75,7 @@
                 <version>2.22.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${apiExample.runner}</suiteXmlFile>
+                        <suiteXmlFile>${runner}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
