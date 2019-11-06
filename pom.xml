@@ -25,7 +25,7 @@
         <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
         <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
         
-        <crowdar.api></crowdar.api>
+        <crowdar.report.disable_screenshot_on_failure></crowdar.report.disable_screenshot_on_failure>
         <crowdar.projectType></crowdar.projectType>
         <crowdar.setupStrategy></crowdar.setupStrategy>
         
@@ -43,14 +43,14 @@
 		        <crowdar.projectType>WEB_CHROME</crowdar.projectType>
 		        <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>     
 		                  
-		        <crowdar.cucumber.option>src/test/resources/web/features --glue ar/web --glue ar/hooks --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
+		        <crowdar.cucumber.option>src/test/resources/web/features --glue ar/web --glue ar/hooks --tags @Regresion --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
             </properties>
         </profile>
          <profile>
             <id>api</id>
             <properties>
  				<crowdar.extent.report.name>Api Test Report</crowdar.extent.report.name>
-		        <crowdar.api>true</crowdar.api>
+		        <crowdar.report.disable_screenshot_on_failure>true</crowdar.report.disable_screenshot_on_failure>
                 <crowdar.cucumber.option>src/test/resources/api/features --glue ar/api --glue ar/hooks --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
 
             	<base.api.url>https://reqres.in/api/users</base.api.url>

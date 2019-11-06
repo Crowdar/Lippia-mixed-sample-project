@@ -1,13 +1,28 @@
 Feature: Login
-  As a nubi user
-  I want to perform a login
-  To verify the behavior
+  COMO usuario del NUBI
+	QUIERO conectarme a la aplicación
+	PARA verificar el correcto funcionamiento de la pantalla de login
 
-  Scenario Outline: Login 
-    Given I want to go to test web page main page
-    When I perform login with username: '<username>' and password: '<password>'
-    Then I verify the main logued user page is displayed
+	@Regresion
+	Scenario Outline: NUBI - Login exitoso
+	  Given el usuario esta en el portal de nubi backoffice
+		When se ingresa usuario: '<usuario>' y clave: '<clave>'
+		Then el usuario visualiza correctamente la pantalla de Inicio de NUBI
 
-    Examples: 
-      | username 												 | password |
-      | martin.marussi+3@wolox.com.ar    | Nubi2020 |
+		Examples:
+		|usuario 											 |clave 	 |
+		|martin.marussi+3@wolox.com.ar |Nubi2020 |      
+      
+      
+  @Regresion
+	Scenario Outline: NUBI - Login incorrecto
+		Given el usuario esta en el portal de nubi backoffice 
+		When se ingresa usuario: '<usuario>' y clave: '<clave>'
+		Then el usuario visualiza un mensaje de '<mensaje>'
+		
+		Examples: 
+      |usuario 		|clave 	|mensaje											|
+      |fakeUser1	|clave 	|usuario o contraseña inválida|
+
+
+

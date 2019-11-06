@@ -22,21 +22,27 @@ public class LoginSteps extends PageSteps {
         userMainPage = new UserMainPage(driver);
     }
 	
-	@Given("^I want to go to test web page main page$")
+	@Given("^el usuario esta en el portal de nubi backoffice$")
 	public void asAnApiUserForExampleEndpoint() {
 		loginPage.go();
 		loginPage.isPageDisplayed();
 	}
 
-	@When("^I perform login with username: '(.*)' and password: '(.*)'$")
-	public void completeUsername(String username, String password){
+	@When("^se ingresa usuario: '(.*)' y clave: '(.*)'$")
+	public void login(String username, String password){
 		loginPage.login(username, password);
 	}
 	
-	@Then("^I verify the main logued user page is displayed$")
+	@Then("^el usuario visualiza correctamente la pantalla de Inicio de NUBI$")
 	public void mainPageIsDisplayed() {
 		loginPage.waitForLoadingDisapear();
     	Assert.assertTrue(userMainPage.isLogguedIn());
+	}
+
+	@Then("^el usuario visualiza un mensaje de '(.*)'$")
+	public void errorMessageVerification(String message) {
+		loginPage.waitForLoadingDisapear();
+		Assert.assertTrue(false);
 	}
 
 }
