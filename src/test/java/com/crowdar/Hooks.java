@@ -1,4 +1,4 @@
-package ar.hooks;
+package com.crowdar;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -14,9 +14,8 @@ public class Hooks {
 		Logger.getRootLogger().info("-----------" + scenario.getName() + "-----------");
 	}
 
-	@After()
-	public void dismissAll(Scenario scenario) {
-		Logger.getRootLogger().info(" ending -----------" + scenario.getName() + "-----------");
-		DriverManager.getDriverInstance().close();
+	@After
+	public void afterScenario(){
+		DriverManager.dismissCurrentDriver();
 	}
 }

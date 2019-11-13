@@ -1,8 +1,0 @@
-{
-  "url": "https://clients-api.dev.tunubi.com/v1/admin/users/{{id}}",
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "body": {}
-}  
-

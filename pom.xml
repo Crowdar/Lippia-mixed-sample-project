@@ -4,56 +4,76 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-       <groupId>com.crowdar.lippia</groupId>
-       <artifactId>root</artifactId>
-       <version>1.6.9</version>
+        <groupId>com.crowdar.lippia</groupId>
+        <artifactId>root</artifactId>
+        <version>1.6.9</version>
     </parent>
 
-    <groupId>com.Crowdar</groupId>
-    <artifactId>nubi_automation</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>nubi_automation</name>
+    <artifactId>Lippia-mixed-example-project</artifactId>
+    <version>1.0</version>
+    <name>Lippia-sample-example-project</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <properties>
-        <crowd.project.name>Nubi Atomation Project</crowd.project.name>
+        <crowd.project.name>Mixed Sample Project</crowd.project.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
+
         <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
         <crowdar.extent.environment>Local</crowdar.extent.environment>
         <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
         <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
-        
+
         <crowdar.report.disable_screenshot_on_failure></crowdar.report.disable_screenshot_on_failure>
         <crowdar.projectType></crowdar.projectType>
         <crowdar.setupStrategy></crowdar.setupStrategy>
-        
-        <runner>testngParallel.xml</runner>
+        <crowdar.gridhub></crowdar.gridhub>
+        <cucumber.runner>testng.xml</cucumber.runner>
+        <crowdar.report.disable_screenshot_on_failure></crowdar.report.disable_screenshot_on_failure>
+        <base.api.url></base.api.url>
     </properties>
     <profiles>
         <profile>
-            <id>web_local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>Web</id>
             <properties>
-				<crowdar.extent.report.name>FrontEndTestsReport</crowdar.extent.report.name>
-				
-		        <crowdar.projectType>WEB_CHROME</crowdar.projectType>
-		        <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>     
-		                  
-		        <crowdar.cucumber.option>src/test/resources/web/features --glue ar/web --glue ar/hooks --tags @Regresion --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
+                <crowdar.cucumber.filter>@Web</crowdar.cucumber.filter>
+                <crowdar.extent.report.name>Web Example Report</crowdar.extent.report.name>
+                <crowdar.projectType>WEB_CHROME</crowdar.projectType>
+                <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>
+                <crowdar.cucumber.option>src/test/resources/web/features --glue web --glue com/crowdar --tags ~@Ignore
+                    --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
+                </crowdar.cucumber.option>
             </properties>
         </profile>
-         <profile>
-            <id>api</id>
+        <profile>
+            <id>Api</id>
             <properties>
- 				<crowdar.extent.report.name>Api Test Report</crowdar.extent.report.name>
-		        <crowdar.report.disable_screenshot_on_failure>true</crowdar.report.disable_screenshot_on_failure>
-                <crowdar.cucumber.option>src/test/resources/api/features --glue ar/api --glue ar/hooks --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty </crowdar.cucumber.option>
-
-            	<base.api.url>https://reqres.in/api/users</base.api.url>
+                <crowdar.cucumber.filter>@Api</crowdar.cucumber.filter>
+                <crowdar.extent.report.name>Api Example Report</crowdar.extent.report.name>
+                <crowdar.report.disable_screenshot_on_failure>true</crowdar.report.disable_screenshot_on_failure>
+                <crowdar.cucumber.option>src/test/resources/api/features --glue api --glue com/crowdar --tags ~@Ignore
+                    --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
+                </crowdar.cucumber.option>
+                <base.api.url>https://reqres.in/api/users</base.api.url>
+                <crowdar.report.disable_screenshot_on_failure>true</crowdar.report.disable_screenshot_on_failure>
+            </properties>
+        </profile>
+        <profile>
+            <id>Mobile</id>
+            <properties>
+                <crowdar.cucumber.filter>@Mobile</crowdar.cucumber.filter>
+                <crowdar.extent.report.name>Mobile Example Report</crowdar.extent.report.name>
+                <crowdar.projectType>MOBILE_ANDROID_APK</crowdar.projectType>
+                <crowdar.setupStrategy>mobile.LocalMobileExecutionStrategy</crowdar.setupStrategy>
+                <crowdar.avd></crowdar.avd>
+                <crowdar.workspaceLocation>C:\\workspace\\crowdar\\Lippia-mixed-sample-project\\
+                </crowdar.workspaceLocation>
+                <crowdar.deviceName>Xperia XA1</crowdar.deviceName>
+                <crowdar.gridhub>http://127.0.0.1:4723/wd/hub</crowdar.gridhub>
+                <crowdar.platformName>android</crowdar.platformName>
+                <crowdar.cucumber.option>src/test/resources/mobile/features --glue mobile --glue com/crowdar
+                    --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
+                </crowdar.cucumber.option>
             </properties>
         </profile>
     </profiles>
@@ -75,20 +95,20 @@
                 <version>2.22.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${runner}</suiteXmlFile>
+                        <suiteXmlFile>${cucumber.runner}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-       <repositories>
-		<repository>
-			<id>crowdarRepo</id>
-			<name>crowdar-repository</name>
-			<url>http://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/</url>
-		</repository>
-	</repositories>
-    
+    <repositories>
+        <repository>
+            <id>crowdarRepo</id>
+            <name>crowdar-repository</name>
+            <url>http://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
 
 </project>

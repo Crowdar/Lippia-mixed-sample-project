@@ -6,26 +6,37 @@ import java.util.List;
 
 public class Users {
 
-	@JsonProperty("users")
-	List<User> data;
+    @JsonProperty("data")
+    List<User> data;
 
-	@JsonProperty("count")
-	private int count;
+    @JsonProperty("page")
+    private int page;
 
-	public List<User> getData() {
-		return data;
-	}
+    @JsonProperty("total")
+    private int total;
 
-	public void setData(List<User> data) {
-		this.data = data;
-	}
+    public List<User> getData() {
+        return data;
+    }
 
-	public int getCount() {
-		return count;
-	}
+    public void setData(List<User> data) {
+        this.data = data;
+    }
 
-	public void setCount(int count) {
-		this.count = count;
-	}
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
 }

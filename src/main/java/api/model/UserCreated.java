@@ -4,37 +4,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserCreated {
 
-	@JsonProperty("name")
-	private String name;
+    @JsonProperty("name")
+    private String name;
 
-	@JsonProperty("job")
-	private String job;
+    @JsonProperty("job")
+    private String job;
 
-	@JsonProperty("id")
-	private String id;
+    @JsonProperty("id")
+    private String id;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getJob() {
-		return job;
-	}
+    public String getJob() {
+        return job;
+    }
 
-	public void setJob(String job) {
-		this.job = job;
-	}
+    public void setJob(String job) {
+        this.job = job;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
 }

@@ -1,7 +1,11 @@
 {
-  "url": "https://clients-api.dev.tunubi.com/v1/admin/blocked_documents",
+  "url": "",
   "headers": {
     "Content-Type": "application/json"
   },
-  "body": ""
+  "body": {
+    "name": "test",
+    "job": "leader"
+  }
 }
+
