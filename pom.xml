@@ -40,8 +40,7 @@
                 <crowdar.extent.report.name>Web Example Report</crowdar.extent.report.name>
                 <crowdar.projectType>WEB_CHROME</crowdar.projectType>
                 <crowdar.setupStrategy>web.DownloadLatestStrategy</crowdar.setupStrategy>
-                <crowdar.cucumber.option>src/test/resources/web/features --glue web --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
-                </crowdar.cucumber.option>
+                <crowdar.cucumber.option>src/test/resources/web/features --glue web --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
             </properties>
         </profile>
         <profile>
@@ -50,8 +49,7 @@
                 <crowdar.cucumber.filter>@Api</crowdar.cucumber.filter>
                 <crowdar.extent.report.name>Api Example Report</crowdar.extent.report.name>
                 <crowdar.report.disable_screenshot_on_failure>true</crowdar.report.disable_screenshot_on_failure>
-                <crowdar.cucumber.option>src/test/resources/api/features --glue api --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
-                </crowdar.cucumber.option>
+                <crowdar.cucumber.option>src/test/resources/api/features --glue api --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
                 <base.api.url>https://reqres.in/api/users</base.api.url>
                 <crowdar.report.disable_screenshot_on_failure>true</crowdar.report.disable_screenshot_on_failure>
             </properties>
@@ -69,8 +67,7 @@
                 <crowdar.deviceName>Xperia XA1</crowdar.deviceName>
                 <crowdar.gridhub>http://127.0.0.1:4723/wd/hub</crowdar.gridhub>
                 <crowdar.platformName>android</crowdar.platformName>
-                <crowdar.cucumber.option>src/test/resources/mobile/features --glue mobile --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty
-                </crowdar.cucumber.option>
+                <crowdar.cucumber.option>src/test/resources/mobile/features --glue mobile --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
             </properties>
         </profile>
     </profiles>
