@@ -1,6 +1,6 @@
 package api.config;
 
-import services.UserService;
+import api.services.UserService;
 
 public enum EntityConfiguration {
 
