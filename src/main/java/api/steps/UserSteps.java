@@ -1,7 +1,7 @@
 package api.steps;
 
-import api.model.Data;
 import api.config.EntityConfiguration;
+import api.model.Data;
 import com.crowdar.api.rest.APIManager;
 import com.crowdar.core.PageSteps;
 import cucumber.api.java.en.And;

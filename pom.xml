@@ -11,7 +11,7 @@
 
     <artifactId>Lippia-mixed-example-project</artifactId>
     <version>1.0</version>
-    <name>Lippia-sample-example-project</name>
+    <name>Lippia-mixed-sample-project</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
@@ -62,10 +62,24 @@
                 <crowdar.projectType>MOBILE_ANDROID_APK</crowdar.projectType>
                 <crowdar.setupStrategy>mobile.LocalMobileExecutionStrategy</crowdar.setupStrategy>
                 <crowdar.avd></crowdar.avd>
-                <crowdar.workspaceLocation>C:\\workspace\\crowdar\\Lippia-mixed-sample-project\\
-                </crowdar.workspaceLocation>
+                <crowdar.workspaceLocation>C:\\workspace\\crowdar\\Lippia-mixed-sample-project\\</crowdar.workspaceLocation>
                 <crowdar.deviceName>Xperia XA1</crowdar.deviceName>
                 <crowdar.gridhub>http://127.0.0.1:4723/wd/hub</crowdar.gridhub>
+                <crowdar.platformName>android</crowdar.platformName>
+                <crowdar.cucumber.option>src/test/resources/mobile/features --glue mobile --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
+            </properties>
+        </profile>
+        <profile>
+            <id>MobileGrid</id>
+            <properties>
+                <crowdar.cucumber.filter>@Mobile</crowdar.cucumber.filter>
+                <crowdar.extent.report.name>Mobile Grid Example Report</crowdar.extent.report.name>
+                <crowdar.projectType>MOBILE_ANDROID_APK</crowdar.projectType>
+                <crowdar.setupStrategy>mobile.LocalMobileExecutionStrategy</crowdar.setupStrategy>
+                <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
+                <crowdar.workspaceLocation>/root/tmp/</crowdar.workspaceLocation>
+                <crowdar.deviceName>Android Emulator</crowdar.deviceName>
+                <crowdar.gridhub>http://172.21.0.2:4444/wd/hub</crowdar.gridhub>
                 <crowdar.platformName>android</crowdar.platformName>
                 <crowdar.cucumber.option>src/test/resources/mobile/features --glue mobile --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
             </properties>

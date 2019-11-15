@@ -8,45 +8,41 @@ services:
      # - 50000:50000
     # volumes:
      # - ./jenkins_home:/var/jenkins_home
-  selenium-hub_web-sample:
-      image: selenium/hub:3.141.59-palladium
-      environment:
-        - GRID_MAX_SESSION=20
-        - GRID_DEBUG=true
-        - GRID_BROWSER_TIMEOUT=3000
-        - GRID_TIMEOUT=3000
-      ports:
-        - 4444:4444
+
+  selenium_hub:
+    image: selenium/hub:3.141.59-palladium
+    environment:
+      - GRID_MAX_SESSION=20
+      - GRID_DEBUG=true
+      - GRID_BROWSER_TIMEOUT=3000
+      - GRID_TIMEOUT=3000
+    ports:
+      - 4444:4444
 
   chrome_web-sample:
-      image: elgalu/selenium:3.141.59-p21
-      depends_on:
-        - selenium-hub_web-sample
-      ports:
-        # VNC: See what's going on by connecting your VNC client to 0.0.0.0:5900
-        - 5900:25900
-        # noVNC: See what's going on by hitting http://0.0.0.0:6080 in your browser
-        #        Important: http://127.0.0.1:6080 works but http://localhost:6080 doesn't
-        - 6081:26080
-      volumes:
-        - /dev/shm:/dev/shm
-      privileged: true
-      environment:
-        - NOVNC=true
-        - SELENIUM_HUB_HOST=selenium-hub_web-sample
-        - SELENIUM_HUB_PORT=4444
-        - SELENIUM_NODE_HOST={{CONTAINER_IP}}
-        - SCREEN_WIDTH=1300
-        - SCREEN_HEIGHT=999
-        - VIDEO=false
-        - GRID=false
-        - CHROME=true
-        - FIREFOX=false
-
-  selenium_hub-mobile-apk:
-      image: selenium/hub:3.14.0-curium
-      ports:
-        - 8888:8888
+    image: elgalu/selenium:3.141.59-p21
+    depends_on:
+      - selenium_hub
+    ports:
+      # VNC: See what's going on by connecting your VNC client to 0.0.0.0:5900
+      - 5900:25900
+      # noVNC: See what's going on by hitting http://0.0.0.0:6080 in your browser
+      #        Important: http://127.0.0.1:6080 works but http://localhost:6080 doesn't
+      - 6081:26080
+    volumes:
+      - /dev/shm:/dev/shm
+    privileged: true
+    environment:
+      - NOVNC=true
+      - SELENIUM_HUB_HOST=selenium_hub
+      - SELENIUM_HUB_PORT=4444
+      - SELENIUM_NODE_HOST={{CONTAINER_IP}}
+      - SCREEN_WIDTH=1300
+      - SCREEN_HEIGHT=999
+      - VIDEO=false
+      - GRID=false
+      - CHROME=true
+      - FIREFOX=false
 
   samsung_s7_9.0:
       image: budtmo/docker-android-x86-9.0
@@ -54,7 +50,7 @@ services:
       # Increase scale number if needed
       scale: 1
       depends_on:
-        - selenium_hub-mobile-apk
+        - selenium_hub
       ports:
         - 6080:6080
       # Change path of apk that you want to test. I use sample_apk that I provide in folder "example"
@@ -65,5 +61,5 @@ services:
         - DEVICE=Samsung Galaxy S7
         - CONNECT_TO_GRID=true
         - APPIUM=true
-        - SELENIUM_HOST=selenium_hub-mobile-apk
+        - SELENIUM_HOST=selenium_hub
         - AUTO_RECORD=true

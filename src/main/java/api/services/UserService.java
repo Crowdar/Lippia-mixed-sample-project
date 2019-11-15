@@ -8,7 +8,7 @@ import com.crowdar.api.rest.Response;
 public class UserService extends MethodsService {
 
     public static Response get(String jsonName) {
-       return get(jsonName, Data.class);
+        return get(jsonName, Data.class);
     }
 
     public static Response post(String jsonName) {

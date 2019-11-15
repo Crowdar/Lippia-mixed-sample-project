@@ -12,23 +12,23 @@ public class ApkApiDemoSteps extends PageSteps {
 
     private ApiDemoHome apiDemoHome;
 
-    public ApkApiDemoSteps(SharedDriver driver){
+    public ApkApiDemoSteps(SharedDriver driver) {
         super(driver);
         apiDemoHome = new ApiDemoHome(driver);
     }
 
     @Given("The user opens the '(.*)' application")
-    public void openAplication(String title){
-    	Assert.assertEquals(apiDemoHome.getTitle(), title);
+    public void openAplication(String title) {
+        Assert.assertEquals(apiDemoHome.getTitle(), title);
     }
 
     @When("The user clicks over '(.*)' menu element")
-    public void executeAction(String menuElementName){
+    public void executeAction(String menuElementName) {
         apiDemoHome.clickMenuElement(menuElementName);
     }
 
     @Then("The user sees the application '(.*)' open")
     public void openAssertion(String title) {
-    	Assert.assertEquals(apiDemoHome.getTitle(), title);
+        Assert.assertEquals(apiDemoHome.getTitle(), title);
     }
 }
