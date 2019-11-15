@@ -79,7 +79,7 @@
                 <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
                 <crowdar.workspaceLocation>/root/tmp/</crowdar.workspaceLocation>
                 <crowdar.deviceName>Android Emulator</crowdar.deviceName>
-                <crowdar.gridhub>http://172.21.0.2:4444/wd/hub</crowdar.gridhub>
+                <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
                 <crowdar.platformName>android</crowdar.platformName>
                 <crowdar.cucumber.option>src/test/resources/mobile/features --glue mobile --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
             </properties>
