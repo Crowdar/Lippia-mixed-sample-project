@@ -70,6 +70,17 @@
                 <crowdar.cucumber.option>src/test/resources/mobile/features --glue mobile --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
             </properties>
         </profile>
+        <profile>
+            <id>WebGrid</id>
+            <properties>
+                <crowdar.cucumber.filter>@Web</crowdar.cucumber.filter>
+                <crowdar.extent.report.name>Web Grid Example Report</crowdar.extent.report.name>
+                <crowdar.cucumber.option>src/test/resources/web/features --glue web --glue com/crowdar --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport --plugin pretty</crowdar.cucumber.option>
+                <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
+                <crowdar.projectType>WEB_CHROME</crowdar.projectType>
+                <crowdar.setupStrategy>web.SeleniumGridStrategy</crowdar.setupStrategy>
+            </properties>
+        </profile>
     </profiles>
     <dependencies>
         <dependency>
