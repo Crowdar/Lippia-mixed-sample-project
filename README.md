@@ -12,7 +12,5 @@
 	
 # Getting started API
     
-- If you are Linux user 
-    [`Getting started - Linux User`](docs/api/README_Linux.md)
-- If you are Windws user
-    [`Getting started - Windows User`](docs/api/README_Windows.md)
+- If you are Linux or Windows user
+    [`Getting started - Linux User`](docs/api/README.md)
